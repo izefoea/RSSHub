@@ -46,6 +46,11 @@ jobs:
           github-mcp-token: ${{ secrets.USER_PAT }}
           max-tokens: 8000
 
+      - name: DEBUG echo response (shell)
+        if: always()
+        run: |
+          echo "${{ steps.inference.outputs.response }}"
+
       - name: Prepare comment body
         id: prepare
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
